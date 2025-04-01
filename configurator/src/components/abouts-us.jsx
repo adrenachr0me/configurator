@@ -1,6 +1,8 @@
+import React from "react";
+import "../index.css";
 function AboutsUs() {
   return (
-    <div>
+    <div className="about">
       <h2>About Us</h2>
       <p>
         We are a team of passionate computer enthusiasts who are dedicated to

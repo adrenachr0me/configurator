@@ -1,12 +1,15 @@
+import React from "react";
 import Logo from "./logo";
 import Menu from "./menu";
+import Menu_icon from "./menu-icon";
+import "../index.css";
 
 function Header() {
   return (
-    <div>
+    <div className="header">
       <Logo />
-      <Menu />
-      <h1></h1>
+      <h1>HiConfig</h1>
+      <Menu_icon />
     </div>
   );
 }

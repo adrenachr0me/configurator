@@ -2,10 +2,10 @@ function Menu() {
   return (
     <div>
       <ul>
-        <li>Home</li>
-        <li>Products</li>
-        <li>About Us</li>
-        <li>Contact</li>
+        <li>Configurations</li>
+        <li>Components</li>
+        <li>Build Guides</li>
+        <li>Support</li>
       </ul>
     </div>
   );

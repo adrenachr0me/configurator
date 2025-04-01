@@ -1,6 +1,8 @@
+import React from "react";
+import "../index.css";
 function Sponsors() {
   return (
-    <div>
+    <div className="sponsors">
       <h2>Our Sponsors</h2>
       <p>
         Thanks to the support of our sponsors, we offer the best components and

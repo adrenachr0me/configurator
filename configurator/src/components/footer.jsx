@@ -1,12 +1,15 @@
 import AboutsUs from "./abouts-us";
 import SocialNetworks from "./social-networks";
-
+import React from "react";
+import "../index.css";
 function Footer() {
   return (
-    <div>
-      <AboutsUs />
+    <div className="footer">
+      <p style={{ float: "left" }}>
+        &copy; 2025 HiConfig. All rights reserved.
+      </p>
       <SocialNetworks />
-      <p>&copy; 2024 PC Club Og Buda. All rights reserved.</p>
+      <AboutsUs />
     </div>
   );
 }
