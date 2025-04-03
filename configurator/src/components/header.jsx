@@ -8,7 +8,7 @@ function Header() {
   return (
     <div className="header">
       <Logo />
-      <h1>HiConfig</h1>
+      <h1 style={{ color: "white" }}>HiConfig</h1>
       <Menu_icon />
     </div>
   );
