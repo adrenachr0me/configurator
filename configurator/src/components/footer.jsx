@@ -5,7 +5,7 @@ import "../index.css";
 function Footer() {
   return (
     <div className="footer">
-      <p style={{ float: "left" }}>
+      <p style={{ float: "left", textAlign: "left", width: "30%" }}>
         &copy; 2025 HiConfig. All rights reserved.
       </p>
       <SocialNetworks />

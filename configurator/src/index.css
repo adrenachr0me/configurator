@@ -10,6 +10,17 @@
   padding: 20px;
   opacity: 0.85;
 }
+button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  font-family: sans-serif;
+  font-size: 15px;
+}
 
 body {
   height: 100vh;
@@ -46,4 +57,10 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.about {
+  float: right;
+  padding: 2rem;
+  max-width: 30%;
+  text-align: center;
 }
