@@ -5,6 +5,7 @@ function Menu() {
         <li>Configurations</li>
         <li>Components</li>
         <li>Build Guides</li>
+        <li>Cart</li>
         <li>Support</li>
       </ul>
     </div>

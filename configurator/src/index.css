@@ -41,10 +41,13 @@ body {
 }
 
 .footer {
-  margin-top: 20px;
-  border-top: 1px solid black;
-  text-align: center;
-  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: gray;
+  color: white;
+  padding: 2rem;
 }
 
 .sponsors {
@@ -65,9 +68,9 @@ body {
   text-align: center;
 }
 .cart {
-  float: center;
+  margin: auto 0 0;
   padding: 2rem;
-  max-width: 70%;
+  max-width: 100%;
   text-align: center;
   background-color: rgb(49, 57, 64);
 }
