@@ -41,10 +41,14 @@ body {
 }
 
 .footer {
-  margin-top: 20px;
-  border-top: 1px solid black;
-  text-align: center;
-  padding: 5px;
+  width: 100%;
+  display: flex;
+  background-color: rgb(32, 32, 32);
+  padding: 20px;
+  color: white;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .sponsors {
@@ -63,4 +67,22 @@ body {
   padding: 2rem;
   max-width: 30%;
   text-align: center;
+}
+
+.sponsors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sponsors img {
+  width: 350px;
+  height: 200px;
+}
+
+.sponsors-image {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
