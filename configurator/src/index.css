@@ -64,3 +64,29 @@ body {
   max-width: 30%;
   text-align: center;
 }
+.cart {
+  float: center;
+  padding: 2rem;
+  max-width: 70%;
+  text-align: center;
+  background-color: rgb(49, 57, 64);
+}
+.carttable {
+  border: 0px;
+  width: 80%;
+  border-collapse: collapse;
+  text-align: center;
+  margin: auto;
+  color: black;
+}
+.buybut {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  font-family: sans-serif;
+  font-size: 15px;
+}
