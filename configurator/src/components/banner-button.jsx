@@ -8,12 +8,13 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Configurator from "./configurator";
+/*************  ✨ Windsurf Command 🌟  *************/
 function Button() {
   const navigate = useNavigate();
   return (
-    <button onClick={() => navigate(<Configurator />)}>
-      Get to configurator
-    </button>
+    <Link to="/configurator">
+      <button>Get to configurator</button>
+    </Link>
   );
 }
 export default Button;

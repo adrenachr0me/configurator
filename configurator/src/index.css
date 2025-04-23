@@ -70,7 +70,7 @@ body {
 }
 
 .sponsors img {
-  width: 350px;
+  width: 30%;
   height: 200px;
 }
 
@@ -119,4 +119,31 @@ body {
   height: 35px;
   font-family: sans-serif;
   font-size: 15px;
+}
+.config-head {
+  margin: auto 0 0;
+  padding: 2rem;
+  max-width: 100%;
+  text-align: center;
+  background-color: rgb(49, 57, 64);
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.config-main h1 {
+  text-align: center;
+}
+.config-main p {
+  text-align: center;
+}
+.config-main table {
+  border: 0px;
+  width: 80%;
+  border-collapse: collapse;
+  text-align: center;
+  margin: auto;
+  color: black;
+  margin-bottom: 5%;
+}
+.config-main td {
+  padding: 20px 0;
 }
