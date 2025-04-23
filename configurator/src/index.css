@@ -41,13 +41,14 @@ body {
 }
 
 .footer {
+  width: 100%;
   display: flex;
+  background-color: rgb(32, 32, 32);
+  padding: 20px;
+  color: white;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: gray;
-  color: white;
-  padding: 2rem;
 }
 
 .sponsors {
@@ -61,11 +62,37 @@ body {
   justify-content: center;
   flex-direction: column;
 }
-.about {
-  float: right;
+
+.sponsors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sponsors img {
+  width: 350px;
+  height: 200px;
+}
+
+.sponsors-image {
   padding: 2rem;
-  max-width: 30%;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.social-networks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-networks img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  padding: 1rem;
 }
 .cart {
   margin: auto 0 0;
