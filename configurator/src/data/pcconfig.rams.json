@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "68081a5bb46d6f1870f30261"
+  },
+  "brand": "Corsair",
+  "model": "Vengeance LPX",
+  "capacityGB": 16,
+  "sticks": 2,
+  "type": "DDR4",
+  "speedMHz": 3200,
+  "price": 60
+},
+{
+  "_id": {
+    "$oid": "68081a64b46d6f1870f30263"
+  },
+  "brand": "Kingston",
+  "model": "FURY Beast",
+  "capacityGB": 32,
+  "sticks": 2,
+  "type": "DDR5",
+  "speedMHz": 5600,
+  "price": 130
+},
+{
+  "_id": {
+    "$oid": "68081a73b46d6f1870f30266"
+  },
+  "brand": "G.Skill",
+  "model": "Ripjaws V",
+  "capacityGB": 16,
+  "sticks": 2,
+  "type": "DDR4",
+  "speedMHz": 3600,
+  "price": 75
+},
+{
+  "_id": {
+    "$oid": "68081a7cb46d6f1870f30267"
+  },
+  "brand": "TeamGroup",
+  "model": "T-Force Delta RGB",
+  "capacityGB": 32,
+  "sticks": 2,
+  "type": "DDR5",
+  "speedMHz": 6000,
+  "price": 150
+},
+{
+  "_id": {
+    "$oid": "68081a89b46d6f1870f3026c"
+  },
+  "brand": "Patriot",
+  "model": "Viper Steel",
+  "capacityGB": 16,
+  "sticks": 1,
+  "type": "DDR4",
+  "speedMHz": 3200,
+  "price": 35
+}]

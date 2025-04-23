@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "68081b58b46d6f1870f302a6"
+  },
+  "brand": "NZXT",
+  "model": "H510",
+  "formFactorSupport": [
+    "ATX",
+    "mATX",
+    "Mini-ITX"
+  ],
+  "maxGpuLengthMM": 381,
+  "price": 80
+},
+{
+  "_id": {
+    "$oid": "68081b62b46d6f1870f302a8"
+  },
+  "brand": "Fractal Design",
+  "model": "Meshify C",
+  "formFactorSupport": [
+    "ATX",
+    "mATX",
+    "Mini-ITX"
+  ],
+  "maxGpuLengthMM": 315,
+  "price": 90
+},
+{
+  "_id": {
+    "$oid": "68081b94b46d6f1870f302b5"
+  },
+  "brand": "Lian Li",
+  "model": "Lancool II Mesh",
+  "formFactorSupport": [
+    "ATX",
+    "mATX",
+    "Mini-ITX"
+  ],
+  "maxGpuLengthMM": 384,
+  "price": 95
+},
+{
+  "_id": {
+    "$oid": "68081ba6b46d6f1870f302b6"
+  },
+  "brand": "Phanteks",
+  "model": "Eclipse P400A",
+  "formFactorSupport": [
+    "ATX",
+    "mATX",
+    "Mini-ITX"
+  ],
+  "maxGpuLengthMM": 420,
+  "price": 85
+},
+{
+  "_id": {
+    "$oid": "68081badb46d6f1870f302b7"
+  },
+  "brand": "Thermaltake",
+  "model": "Versa H18",
+  "formFactorSupport": [
+    "mATX",
+    "Mini-ITX"
+  ],
+  "maxGpuLengthMM": 350,
+  "price": 55
+}]

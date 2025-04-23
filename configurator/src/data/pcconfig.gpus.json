@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "680819dfb46d6f1870f30244"
+  },
+  "brand": "NVIDIA",
+  "model": "RTX 4070",
+  "memoryGB": 12,
+  "type": "GDDR6X",
+  "tdp": 200,
+  "lengthMM": 240,
+  "price": 599
+},
+{
+  "_id": {
+    "$oid": "680819e8b46d6f1870f30246"
+  },
+  "brand": "AMD",
+  "model": "Radeon RX 6600",
+  "memoryGB": 8,
+  "type": "GDDR6",
+  "tdp": 132,
+  "lengthMM": 190,
+  "price": 210
+},
+{
+  "_id": {
+    "$oid": "680819efb46d6f1870f30248"
+  },
+  "brand": "NVIDIA",
+  "model": "GTX 1660 Super",
+  "memoryGB": 6,
+  "type": "GDDR6",
+  "tdp": 125,
+  "lengthMM": 229,
+  "price": 200
+},
+{
+  "_id": {
+    "$oid": "680819feb46d6f1870f30249"
+  },
+  "brand": "NVIDIA",
+  "model": "GeForce RTX 3060",
+  "memoryGB": 12,
+  "type": "GDDR6",
+  "tdp": 170,
+  "lengthMM": 242,
+  "price": 330
+},
+{
+  "_id": {
+    "$oid": "68081a08b46d6f1870f3024a"
+  },
+  "brand": "AMD",
+  "model": "Radeon RX 6700 XT",
+  "memoryGB": 12,
+  "type": "GDDR6",
+  "tdp": 230,
+  "lengthMM": 267,
+  "price": 370
+}]
