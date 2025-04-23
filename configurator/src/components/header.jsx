@@ -3,12 +3,21 @@ import Logo from "./logo";
 import Menu from "./menu";
 import Menu_icon from "./menu-icon";
 import "../index.css";
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 function Header() {
+  const navigate = useNavigate();
   return (
     <div className="header">
       <Logo />
-      <h1 style={{ color: "white" }}>HiConfig</h1>
+      <Link to="/">
+        <h1>HiConfig</h1>
+      </Link>
       <Menu_icon />
     </div>
   );

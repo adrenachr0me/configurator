@@ -1,15 +1,17 @@
 import React from "react";
 import "../index.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Headerconf from "./config-head";
+import Header from "./header";
 import ConfigMain from "./config-main";
 import Footer from "./footer";
+import ButtonCart from "./cart-button";
 
 function Configurator() {
   return (
     <div>
-      <Headerconf />
+      <Header />
       <ConfigMain />
+      <ButtonCart />
       <Footer />
     </div>
   );
