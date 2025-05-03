@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React from "react";
 import "../index.css";
-import LoginLogin from "./login-login";
 
-function LoginSignin() {
+function LoginSignin({ switchToLogin }) {
   return (
     <div className="sign-in">
       <h1>Sign in</h1>
@@ -13,8 +11,14 @@ function LoginSignin() {
       <input type="password" placeholder="Confirm Password" />
 
       <button>Sign in</button>
-      <p>Already have an account? Log in!</p>
+      <p>
+        Already have an account?{" "}
+        <span className="link" onClick={switchToLogin}>
+          Log in!
+        </span>
+      </p>
     </div>
   );
 }
+
 export default LoginSignin;

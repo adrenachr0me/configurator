@@ -178,6 +178,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+.link {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
 .sign-in input {
   margin: 30px;
   width: 50%;
@@ -193,6 +198,37 @@ body {
   text-align: center;
 }
 .sign-in button {
+  height: 35px;
+  width: 150px;
+}
+.login {
+  margin: auto 0 0;
+  padding: 2rem;
+  max-width: 100%;
+  text-align: center;
+  background-color: rgb(49, 57, 64);
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login input {
+  margin: 30px;
+  width: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #e7e7e7;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.login button {
   height: 35px;
   width: 150px;
 }
