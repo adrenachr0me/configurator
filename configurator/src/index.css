@@ -1,13 +1,17 @@
 .header {
-  width: 100%;
+  max-width: 100%;
   position: sticky;
   top: 0;
   display: flex;
+  text-align: center;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
-  padding: 20px;
+  background-image: linear-gradient(to bottom, #333, #555);
+  padding: 30px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0.85;
 }
 .header h1 {
@@ -16,9 +20,17 @@
   font-size: 35px;
   text-decoration: none;
 }
-a {
+.user-icon {
+  width: 10%;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+a:link,
+a:visited,
+a:active {
+  color: inherit;
   text-decoration: none;
-  color: white;
 }
 button {
   background-color: green;
@@ -38,6 +50,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  max-width: 100%;
 }
 
 .banner {
@@ -49,9 +62,17 @@ body {
   color: rgb(0, 0, 0);
   padding: 2rem;
 }
-
+.mainpage {
+  background-image: url(./assets/banner.png);
+  background-position: right;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+}
 .footer {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   background-color: rgb(32, 32, 32);
   padding: 20px;
@@ -59,29 +80,34 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  background-image: linear-gradient(to top, #333, #555);
+  padding: 30px;
+  border: 1px solid #666;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.85;
 }
 
 .sponsors {
-  background-color: white;
   padding: 2rem;
   text-align: center;
 }
 
 .text-banner {
+  color: white;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
 .sponsors {
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .sponsors img {
-  width: 30%;
-  height: 200px;
+  height: 100px;
 }
 
 .sponsors-image {
@@ -139,6 +165,37 @@ body {
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+.sign-in {
+  margin: auto 0 0;
+  padding: 2rem;
+  max-width: 100%;
+  text-align: center;
+  background-color: rgb(49, 57, 64);
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in input {
+  margin: 30px;
+  width: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #e7e7e7;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.sign-in button {
+  height: 35px;
+  width: 150px;
+}
 .config-main {
   margin-top: 30px;
 }
@@ -172,4 +229,39 @@ body {
   font-family: sans-serif;
   font-size: 15px;
   margin-bottom: 20px;
+}
+.menu {
+  background-color: white;
+  border: 0px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: black;
+}
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu li {
+  cursor: pointer;
+}
+select {
+  width: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #e7e7e7;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
 }

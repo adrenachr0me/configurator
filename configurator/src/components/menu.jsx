@@ -1,11 +1,23 @@
+import CartSite from "./cart-site";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
+import "../index.css";
 function Menu() {
   return (
-    <div>
+    <div className="menu">
       <ul>
         <li>Configurations</li>
         <li>Components</li>
         <li>Build Guides</li>
-        <li>Cart</li>
+        <li>
+          <Link to="/cart">Cart</Link>
+        </li>
         <li>Support</li>
       </ul>
     </div>

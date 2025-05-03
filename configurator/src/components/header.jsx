@@ -10,6 +10,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import UserIcon from "./user-icon";
 function Header() {
   const navigate = useNavigate();
   return (
@@ -18,6 +19,8 @@ function Header() {
       <Link to="/">
         <h1>HiConfig</h1>
       </Link>
+
+      <UserIcon />
       <Menu_icon />
     </div>
   );

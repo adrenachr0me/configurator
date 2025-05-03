@@ -17,10 +17,12 @@ import {
 } from "react-router-dom";
 import Configurator from "./components/configurator";
 import Button from "./components/banner-button";
+import LoginPage from "./components/login";
+import LoginLogin from "./components/login-login";
 
 function MainPage() {
   return (
-    <div>
+    <div className="mainpage">
       <Header />
       <Banner />
       <Sponsors />
@@ -37,6 +39,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/cart" element={<CartSite />} />
         <Route path="/configurator" element={<Configurator />} />
         <Route path="/banner-button" element={<Button />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route exact path="/login-login" component={LoginLogin} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
