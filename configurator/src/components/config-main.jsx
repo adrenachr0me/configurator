@@ -38,7 +38,6 @@ function ConfigMain() {
             <td>Processor</td>
             <td>
               <select>
-                <option>CPU</option>
                 {cpus.map((cpus) => (
                   <option key={cpus._id}>{cpus.name}</option>
                 ))}
@@ -49,7 +48,6 @@ function ConfigMain() {
             <td>GPU</td>
             <td>
               <select>
-                <option>GPU</option>
                 {gpus.map((gpu) => (
                   <option key={gpu._id}>{gpu.name}</option>
                 ))}
@@ -60,7 +58,6 @@ function ConfigMain() {
             <td>RAM</td>
             <td>
               <select>
-                <option>RAM</option>
                 {rams.map((ram) => (
                   <option key={ram._id}>{ram.name}</option>
                 ))}
@@ -71,7 +68,6 @@ function ConfigMain() {
             <td>Storage</td>
             <td>
               <select>
-                <option>Storage</option>
                 {storage.map((storage) => (
                   <option key={storage._id}>{storage.name}</option>
                 ))}
@@ -82,7 +78,6 @@ function ConfigMain() {
             <td>Power Supply</td>
             <td>
               <select>
-                <option>PS</option>
                 {power.map((power) => (
                   <option key={power._id}>{power.name}</option>
                 ))}
@@ -93,7 +88,6 @@ function ConfigMain() {
             <td>Case</td>
             <td>
               <select>
-                <option>Case</option>
                 {cases.map((cases) => (
                   <option key={cases._id}>{cases.name}</option>
                 ))}
@@ -104,7 +98,6 @@ function ConfigMain() {
             <td>Motherboard</td>
             <td>
               <select>
-                <option>MBs</option>
                 {motherboard.map((motherboard) => (
                   <option key={motherboard._id}>{motherboard.name}</option>
                 ))}
@@ -115,7 +108,6 @@ function ConfigMain() {
             <td>Cooler</td>
             <td>
               <select>
-                <option>Cooler</option>
                 {cooler.map((cooler) => (
                   <option key={cooler._id}>{cooler.name}</option>
                 ))}
