@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const gpuSchema = new mongoose.Schema({
+const coolsSchema = new mongoose.Schema({
   brand: String,
   model: String,
   coolingType: String,
@@ -9,4 +9,4 @@ const gpuSchema = new mongoose.Schema({
   price: Number,
 });
 
-module.exports = mongoose.model("COOLS", gpuSchema, "cooler");
+module.exports = mongoose.model("COOLS", coolsSchema, "cooler");

@@ -1,67 +1,128 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import "../index.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import configurator from "./configurator";
+import axios from "axios";
+
 function ConfigMain() {
+  const [cpus, setCpus] = useState([]);
+  const [gpus, setGpus] = useState([]);
+  const [rams, setRams] = useState([]);
+  const [motherboard, setMotherboard] = useState([]);
+  const [storage, setStorage] = useState([]);
+  const [cases, setCase] = useState([]);
+  const [cooler, setCooler] = useState([]);
+  const [power, setPower] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/cpus").then((res) => {
+      console.log("CPUs:", res.data);
+      setCpus(res.data.data);
+    });
+    axios.get("/api/gpus").then((res) => setGpus(res.data.data));
+    axios.get("/api/rams").then((res) => setRams(res.data.data));
+    axios.get("/api/motherboards").then((res) => setMotherboard(res.data.data));
+    axios.get("/api/storage").then((res) => setStorage(res.data.data));
+    axios.get("/api/cases").then((res) => setCase(res.data.data));
+    axios.get("/api/cooler").then((res) => setCooler(res.data.data));
+    axios.get("/api/power").then((res) => setPower(res.data.data));
+  }, []);
   return (
     <div className="config-main">
       <h1>Configurate your PC</h1>
       <p>Choose your options</p>
       <table>
-        <tr>
-          <td>Processor</td>
-          <td>
-            <select>
-              <option value="intel">Intel</option>
-              <option value="amd">AMD</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Motherboard</td>
-          <td>
-            <select>
-              <option value="asus">ASUS</option>
-              <option value="gigabyte">Gigabyte</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>RAM</td>
-          <td>
-            <select>
-              <option value="8gb">8GB</option>
-              <option value="16gb">16GB</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Storage</td>
-          <td>
-            <select>
-              <option value="ssd">SSD</option>
-              <option value="hdd">HDD</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Power Supply</td>
-          <td>
-            <select>
-              <option value="500w">500W</option>
-              <option value="750w">750W</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Case</td>
-          <td>
-            <select>
-              <option value="atx">ATX</option>
-              <option value="micro-atx">Micro-ATX</option>
-            </select>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Processor</td>
+            <td>
+              <select>
+                <option>CPU</option>
+                {cpus.map((cpus) => (
+                  <option key={cpus._id}>{cpus.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>GPU</td>
+            <td>
+              <select>
+                <option>GPU</option>
+                {gpus.map((gpu) => (
+                  <option key={gpu._id}>{gpu.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>
+              <select>
+                <option>RAM</option>
+                {rams.map((ram) => (
+                  <option key={ram._id}>{ram.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>
+              <select>
+                <option>Storage</option>
+                {storage.map((storage) => (
+                  <option key={storage._id}>{storage.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Power Supply</td>
+            <td>
+              <select>
+                <option>PS</option>
+                {power.map((power) => (
+                  <option key={power._id}>{power.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Case</td>
+            <td>
+              <select>
+                <option>Case</option>
+                {cases.map((cases) => (
+                  <option key={cases._id}>{cases.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Motherboard</td>
+            <td>
+              <select>
+                <option>MBs</option>
+                {motherboard.map((motherboard) => (
+                  <option key={motherboard._id}>{motherboard.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Cooler</td>
+            <td>
+              <select>
+                <option>Cooler</option>
+                {cooler.map((cooler) => (
+                  <option key={cooler._id}>{cooler.name}</option>
+                ))}
+              </select>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
