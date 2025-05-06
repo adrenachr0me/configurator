@@ -14,19 +14,22 @@ function ConfigMain() {
   const [cases, setCase] = useState([]);
   const [cooler, setCooler] = useState([]);
   const [power, setPower] = useState([]);
+  const api = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
 
   useEffect(() => {
-    axios.get("/api/cpus").then((res) => {
+    api.get("/cpus").then((res) => {
       console.log("CPUs:", res.data);
-      setCpus(res.data.data);
+      setCpus(res.data);
     });
-    axios.get("/api/gpus").then((res) => setGpus(res.data.data));
-    axios.get("/api/rams").then((res) => setRams(res.data.data));
-    axios.get("/api/motherboards").then((res) => setMotherboard(res.data.data));
-    axios.get("/api/storage").then((res) => setStorage(res.data.data));
-    axios.get("/api/cases").then((res) => setCase(res.data.data));
-    axios.get("/api/cooler").then((res) => setCooler(res.data.data));
-    axios.get("/api/power").then((res) => setPower(res.data.data));
+    api.get("/gpus").then((res) => setGpus(res.data));
+    api.get("/rams").then((res) => setRams(res.data));
+    api.get("/motherboards").then((res) => setMotherboard(res.data));
+    api.get("/storage").then((res) => setStorage(res.data));
+    api.get("/cases").then((res) => setCase(res.data));
+    api.get("/cooler").then((res) => setCooler(res.data));
+    api.get("/power").then((res) => setPower(res.data));
   }, []);
   return (
     <div className="config-main">
@@ -39,7 +42,9 @@ function ConfigMain() {
             <td>
               <select>
                 {cpus.map((cpus) => (
-                  <option key={cpus._id}>{cpus.name}</option>
+                  <option key={cpus._id}>
+                    {cpus.brand} {cpus.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -49,7 +54,9 @@ function ConfigMain() {
             <td>
               <select>
                 {gpus.map((gpu) => (
-                  <option key={gpu._id}>{gpu.name}</option>
+                  <option key={gpu._id}>
+                    {gpu.brand} {gpu.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -59,7 +66,9 @@ function ConfigMain() {
             <td>
               <select>
                 {rams.map((ram) => (
-                  <option key={ram._id}>{ram.name}</option>
+                  <option key={ram._id}>
+                    {ram.brand} {ram.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -69,7 +78,9 @@ function ConfigMain() {
             <td>
               <select>
                 {storage.map((storage) => (
-                  <option key={storage._id}>{storage.name}</option>
+                  <option key={storage._id}>
+                    {storage.brand} {storage.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -79,7 +90,9 @@ function ConfigMain() {
             <td>
               <select>
                 {power.map((power) => (
-                  <option key={power._id}>{power.name}</option>
+                  <option key={power._id}>
+                    {power.brand} {power.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -89,7 +102,9 @@ function ConfigMain() {
             <td>
               <select>
                 {cases.map((cases) => (
-                  <option key={cases._id}>{cases.name}</option>
+                  <option key={cases._id}>
+                    {cases.brand} {cases.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -99,7 +114,9 @@ function ConfigMain() {
             <td>
               <select>
                 {motherboard.map((motherboard) => (
-                  <option key={motherboard._id}>{motherboard.name}</option>
+                  <option key={motherboard._id}>
+                    {motherboard.brand} {motherboard.model}
+                  </option>
                 ))}
               </select>
             </td>
@@ -109,7 +126,9 @@ function ConfigMain() {
             <td>
               <select>
                 {cooler.map((cooler) => (
-                  <option key={cooler._id}>{cooler.name}</option>
+                  <option key={cooler._id}>
+                    {cooler.brand} {cooler.model}
+                  </option>
                 ))}
               </select>
             </td>
