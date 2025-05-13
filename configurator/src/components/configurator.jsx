@@ -6,12 +6,12 @@ import ConfigMain from "./config-main";
 import Footer from "./footer";
 import ButtonCart from "./cart-button";
 
-function Configurator() {
+function Configurator({ config, setConfig }) {
   return (
     <div>
       <Header />
-      <ConfigMain />
-      <ButtonCart />
+      <ConfigMain config={config} setConfig={setConfig} />
+      <ButtonCart config={config} />
       <Footer />
     </div>
   );

@@ -29,7 +29,6 @@ const coolsRoutes = require("./routes/coolsRoutes");
 app.use("/api/cooler", coolsRoutes);
 const caseRoutes = require("./routes/caseRoutes");
 app.use("/api/cases", caseRoutes);
-// Тестовый маршрут
 app.get("/", (req, res) => {
   res.send("Сервер работает");
 });

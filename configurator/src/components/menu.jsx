@@ -1,4 +1,4 @@
-import CartSite from "./cart-site";
+import BuyCart from "./cart";
 import {
   BrowserRouter,
   Routes,
