@@ -34,7 +34,7 @@ function ConfigMain({ config, setConfig }) {
     <div className="config-main">
       <h1>Configurate your PC</h1>
       <p>Choose your options</p>
-      <table>
+      <table className="config-table">
         <tbody>
           <tr>
             <td>Processor</td>

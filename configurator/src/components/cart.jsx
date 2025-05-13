@@ -31,7 +31,7 @@ function BuyCart({ config, setConfig }) {
       <Header />
       <div className="cart">
         <p>Goods in the cart:</p>
-        <table className="carttable">
+        <table className="cart-table">
           <thead>
             <tr>
               <th>Type</th>
