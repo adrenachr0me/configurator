@@ -3,10 +3,9 @@
   position: sticky;
   top: 0;
   display: flex;
-  text-align: center;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   background-image: linear-gradient(to bottom, #333, #555);
   padding: 30px;
   border: 1px solid #666;
@@ -63,12 +62,10 @@ body {
   padding: 2rem;
 }
 .mainpage {
-  background-image: url(./assets/banner.png);
-  background-position: right;
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
   background-blend-mode: multiply;
 }
 .footer {
@@ -93,7 +90,7 @@ body {
 }
 
 .text-banner {
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   flex-direction: column;

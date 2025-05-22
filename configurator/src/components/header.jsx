@@ -15,12 +15,10 @@ function Header() {
   const navigate = useNavigate();
   return (
     <div className="header">
-      <Logo />
       <Link to="/">
         <h1>HiConfig</h1>
       </Link>
 
-      <UserIcon />
       <Menu_icon />
     </div>
   );
