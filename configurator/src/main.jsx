@@ -1,31 +1,30 @@
+"use client";
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "./components/header";
 import Banner from "./components/banner";
 import Sponsors from "./components/sponsors";
 import Footer from "./components/footer";
-import Menu from "./components/menu";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useParams,
-  useNavigate,
-} from "react-router-dom";
+import FeaturedBuilds from "./components/featured-builds";
+import WhyChooseUs from "./components/why-choose-us";
+import Testimonials from "./components/testimonials";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Configurator from "./components/configurator";
 import Button from "./components/banner-button";
 import LoginPage from "./components/login";
 import LoginLogin from "./components/login-login";
-import ConfigMain from "./components/config-main";
-import BuyCart from "./components/cart"; // <- импорт BuyCart
+import BuyCart from "./components/cart";
 
 function MainPage() {
   return (
     <div className="mainpage">
       <Header />
       <Banner />
+      <WhyChooseUs />
+      <FeaturedBuilds />
+      <Testimonials />
       <Sponsors />
       <Footer />
     </div>
@@ -49,11 +48,11 @@ function AppWithConfigurator() {
       <Route path="/" element={<MainPage />} />
       <Route
         path="/cart"
-        element={<BuyCart config={config} setConfig={setConfig} />} // передаём сюда config и setConfig
+        element={<BuyCart config={config} setConfig={setConfig} />}
       />
       <Route
         path="/configurator"
-        element={<Configurator config={config} setConfig={setConfig} />} // тоже передаём сюда
+        element={<Configurator config={config} setConfig={setConfig} />}
       />
       <Route path="/banner-button" element={<Button />} />
       <Route path="/login" element={<LoginPage />} />

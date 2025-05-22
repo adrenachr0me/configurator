@@ -1,18 +1,29 @@
-import React from "react";
-import "../index.css";
-import SponsorsImage from "./sponsors-image";
+const Sponsors = () => {
+  const sponsors = [
+    { name: "NVIDIA", image: "/placeholder.svg?height=80&width=200" },
+    { name: "HyperX", image: "/placeholder.svg?height=80&width=200" },
+    { name: "Samsung", image: "/placeholder.svg?height=80&width=200" },
+    { name: "Intel", image: "/placeholder.svg?height=80&width=200" },
+    { name: "AMD", image: "/placeholder.svg?height=80&width=200" },
+  ];
 
-function Sponsors() {
   return (
     <div className="sponsors">
-      <h2>Our Sponsors</h2>
-      <p>
-        Thanks to the support of our sponsors, we offer the best components and
-        builds at great prices!
-      </p>
-      <SponsorsImage />
+      <div className="container">
+        <h2 className="sponsors-title">Our Partners</h2>
+        <div className="sponsors-grid">
+          {sponsors.map((sponsor, index) => (
+            <div key={index} className="sponsor-logo">
+              <img
+                src={sponsor.image || "/placeholder.svg"}
+                alt={sponsor.name}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Sponsors;
