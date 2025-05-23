@@ -1122,58 +1122,211 @@ button:hover {
   cursor: pointer;
 }
 
-.sign-in input {
-  margin: 30px;
-  width: 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  background-color: #e7e7e7;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  color: #333;
-  text-align: center;
+/* Login Page Styles */
+.loginpage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
 }
 
-.sign-in button {
-  height: 35px;
-  width: 150px;
-}
-
-.login {
-  margin: auto 0 0;
-  padding: 2rem;
+/* Common Login/Signup Form Styles */
+.login,
+.sign-in {
+  flex: 1;
+  margin: 0;
+  padding: 3rem 1rem;
   max-width: 100%;
   text-align: center;
-  background-color: rgb(49, 57, 64);
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-image: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  color: #1f2937;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.login input {
-  margin: 30px;
-  width: 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.login::before,
+.sign-in::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-image: linear-gradient(to right, #16a34a, #3b82f6);
+}
+
+.login h1,
+.sign-in h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.login p,
+.sign-in p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.login p:last-child,
+.sign-in p:last-child {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.login input,
+.sign-in input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0.75rem 0;
+  padding: 1rem 1.25rem;
   border-radius: 8px;
-  padding: 8px 12px;
-  background-color: #e7e7e7;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  color: #333;
-  text-align: center;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 1rem;
+  color: #1f2937;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
 }
 
-.login button {
-  height: 35px;
-  width: 150px;
+.login input:focus,
+.sign-in input:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.login input::placeholder,
+.sign-in input::placeholder {
+  color: #9ca3af;
+}
+
+.login button,
+.sign-in button {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  height: auto;
+  background-color: #16a34a;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);
+}
+
+.login button:hover,
+.sign-in button:hover {
+  background-color: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(22, 163, 74, 0.25);
+}
+
+.login button:active,
+.sign-in button:active {
+  transform: translateY(0);
+}
+
+/* Link Styling */
+.link {
+  color: #16a34a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #15803d;
+  text-decoration: underline;
+}
+
+/* Animation for form switching */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login,
+.sign-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .login h1,
+  .sign-in h1 {
+    font-size: 2rem;
+  }
+
+  .login input,
+  .sign-in input,
+  .login button,
+  .sign-in button {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Form Container - Add this to wrap your existing form content */
+.login::after,
+.sign-in::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  max-height: 500px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  z-index: -1;
+}
+
+/* Additional styling for better visual hierarchy */
+.login h1,
+.sign-in h1 {
+  margin-top: -2rem;
+}
+
+/* Enhance the login/signup button with animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.login button,
+.sign-in button {
+  animation: pulse 2s infinite;
+}
+
+.login button:hover,
+.sign-in button:hover {
+  animation: none;
 }
 
 .config-main {
