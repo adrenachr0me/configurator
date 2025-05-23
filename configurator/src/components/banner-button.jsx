@@ -8,7 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Configurator from "./configurator";
-/*************  ✨ Windsurf Command 🌟  *************/
+
 function Button() {
   const navigate = useNavigate();
   return (

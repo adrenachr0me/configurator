@@ -1,3 +1,7 @@
+import React from "react";
+import "../index.css";
+import banner from "../assets/banner.png";
+
 const BannerSection2 = () => {
   return (
     <div className="banner-image">
@@ -5,9 +9,9 @@ const BannerSection2 = () => {
         <div className="glow-effect"></div>
         <div className="image-card">
           <img
-            src="/placeholder.svg?height=400&width=500"
+            src={banner || "/placeholder.svg"}
             alt="Gaming PC"
-            className="w-full h-auto"
+            className="pc-image"
           />
           <div className="image-overlay">
             <div className="image-overlay-title">RTX 4080 Gaming PC</div>

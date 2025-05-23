@@ -1,12 +1,14 @@
-import BannerSection1 from "./banner-section1";
-import BannerSection2 from "./banner-section2";
+import React from "react";
+import BannerContent from "./banner-content";
+import BannerImage from "./banner-image";
+import "../index.css";
 
 const Banner = () => {
   return (
     <div className="banner">
-      <div className="container banner-container">
-        <BannerSection1 />
-        <BannerSection2 />
+      <div className="banner-container">
+        <BannerContent />
+        <BannerImage />
       </div>
     </div>
   );
