@@ -1,33 +1,29 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const FeaturedBuilds = () => {
-  const builds = [
-    {
-      id: 1,
-      name: "Starter Gaming PC",
-      price: "$599.99",
-      specs: "RTX 3060, i5-12400F, 16GB RAM",
-      image: "/placeholder.svg?height=200&width=300",
-      colorClass: "build-blue",
-    },
-    {
-      id: 2,
-      name: "Pro Streamer Build",
-      price: "$1,299.99",
-      specs: "RTX 4070, i7-13700K, 32GB RAM",
-      image: "/placeholder.svg?height=200&width=300",
-      colorClass: "build-red",
-    },
-    {
-      id: 3,
-      name: "Ultimate Gaming Rig",
-      price: "$2,499.99",
-      specs: "RTX 4090, i9-13900K, 64GB RAM",
-      image: "/placeholder.svg?height=200&width=300",
-      colorClass: "build-green",
-    },
-  ]
+  const api = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
 
+  const [builds, setBuilds] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api
+      .get("/prebuilds")
+      .then((response) => {
+        console.log(response.data);
+        setBuilds(response.data);
+        setLoading(false);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  console.log("Builds:", builds);
   return (
     <div className="featured-builds">
       <div className="container">
@@ -36,12 +32,52 @@ const FeaturedBuilds = () => {
           {builds.map((build) => (
             <div key={build.id} className="build-card">
               <div className={`build-image ${build.colorClass}`}>
-                <img src={build.image || "/placeholder.svg"} alt={build.name} className="h-32 object-contain" />
+                <img
+                  src={build.image || "/placeholder.svg"}
+                  alt={build.title}
+                  className="h-32 object-contain"
+                />
               </div>
               <div className="build-content">
-                <h3 className="build-title">{build.name}</h3>
+                <h3 className="build-title">{build.title}</h3>
                 <p className="build-specs">{build.specs}</p>
-                <p className="build-price">{build.price}</p>
+                <p className="build-price">{`${build.price}$`}</p>
+                <ul>
+                  <li>
+                    CPU: {build.components.cpu.brand}{" "}
+                    {build.components.cpu.model}
+                  </li>
+                  <li>
+                    GPU: {build.components.gpu.brand}{" "}
+                    {build.components.gpu.model}
+                  </li>
+                  <li>
+                    Cooler: {build.components.cooler.brand}{" "}
+                    {build.components.cooler.model}
+                  </li>
+                  <li>
+                    Motherboard: {build.components.motherboard.brand}{" "}
+                    {build.components.motherboard.model}
+                  </li>
+                  <li>
+                    RAM: {build.components.ram.brand}{" "}
+                    {build.components.ram.model}{" "}
+                    {build.components.ram.capacityGB}GB
+                  </li>
+                  <li>
+                    Storage: {build.components.storage.brand}{" "}
+                    {build.components.storage.model}{" "}
+                    {build.components.storage.capacityGB}GB
+                  </li>
+                  <li>
+                    PSU: {build.components.psu.brand}{" "}
+                    {build.components.psu.model} {build.components.psu.wattage}W
+                  </li>
+                  <li>
+                    Case: {build.components.case.brand}{" "}
+                    {build.components.case.model}{" "}
+                  </li>
+                </ul>
                 <Link to="/configurator" className="customize-button">
                   Customize
                   <svg
@@ -63,7 +99,7 @@ const FeaturedBuilds = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedBuilds
+export default FeaturedBuilds;

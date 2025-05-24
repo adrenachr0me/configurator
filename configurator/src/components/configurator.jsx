@@ -6,11 +6,11 @@ import ConfigMain from "./config-main";
 import Footer from "./footer";
 import ButtonCart from "./cart-button";
 
-function Configurator({ config, setConfig }) {
+function Configurator({ config, setConfig, prebuilds }) {
   return (
     <div>
       <Header />
-      <ConfigMain config={config} setConfig={setConfig} />
+      <ConfigMain config={config} setConfig={setConfig} prebuilds={prebuilds} />
       <ButtonCart config={config} />
       <Footer />
     </div>

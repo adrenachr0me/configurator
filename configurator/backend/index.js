@@ -29,6 +29,8 @@ const coolsRoutes = require("./routes/coolsRoutes");
 app.use("/api/cooler", coolsRoutes);
 const caseRoutes = require("./routes/caseRoutes");
 app.use("/api/cases", caseRoutes);
+const prebuildRoutes = require("./routes/prebuildRoutes");
+app.use("/api/prebuilds", prebuildRoutes);
 app.get("/", (req, res) => {
   res.send("Сервер работает");
 });

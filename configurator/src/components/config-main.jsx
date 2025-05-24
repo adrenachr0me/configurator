@@ -4,6 +4,8 @@ import "../index.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import configurator from "./configurator";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+
 function ConfigMain({ config, setConfig }) {
   const [cpus, setCpus] = useState([]);
   const [gpus, setGpus] = useState([]);
@@ -17,19 +19,164 @@ function ConfigMain({ config, setConfig }) {
     baseURL: "http://localhost:5000/api",
   });
 
+  const location = useLocation();
+  const prebuildConfig = location.state?.prebuildConfig || null;
+
   useEffect(() => {
-    api.get("/cpus").then((res) => {
-      console.log("CPUs:", res.data);
-      setCpus(res.data);
-    });
-    api.get("/gpus").then((res) => setGpus(res.data));
-    api.get("/rams").then((res) => setRams(res.data));
-    api.get("/motherboards").then((res) => setMotherboard(res.data));
-    api.get("/storage").then((res) => setStorage(res.data));
-    api.get("/cases").then((res) => setCase(res.data));
-    api.get("/cooler").then((res) => setCooler(res.data));
-    api.get("/power").then((res) => setPower(res.data));
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/cpus");
+        setCpus(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/gpus");
+        setGpus(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/rams");
+        setRams(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/motherboards");
+        setMotherboard(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/storage");
+        setStorage(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/cases");
+        setCase(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/cooler");
+        setCooler(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      try {
+        const response = await api.get("/power");
+        setPower(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    if (prebuildConfig) {
+      const loadPrebuildToConfig = () => {
+        const selectedConfig = {};
+
+        if (prebuildConfig.cpu) {
+          const selectedCPU = cpus.find(
+            (cpu) => cpu._id === prebuildConfig.cpu
+          );
+          if (selectedCPU) selectedConfig.cpu = selectedCPU;
+        }
+        if (prebuildConfig.gpu) {
+          const selectedGPU = gpus.find(
+            (gpu) => gpu._id === prebuildConfig.gpu
+          );
+          if (selectedGPU) selectedConfig.gpu = selectedGPU;
+        }
+        if (prebuildConfig.ram) {
+          const selectedRAM = rams.find(
+            (ram) => ram._id === prebuildConfig.ram
+          );
+          if (selectedRAM) selectedConfig.ram = selectedRAM;
+        }
+        if (prebuildConfig.motherboard) {
+          const selectedMB = motherboard.find(
+            (mb) => mb._id === prebuildConfig.motherboard
+          );
+          if (selectedMB) selectedConfig.motherboard = selectedMB;
+        }
+        if (prebuildConfig.storage) {
+          const selectedStorage = storage.find(
+            (s) => s._id === prebuildConfig.storage
+          );
+          if (selectedStorage) selectedConfig.storage = selectedStorage;
+        }
+        if (prebuildConfig.cases) {
+          const selectedCase = cases.find(
+            (c) => c._id === prebuildConfig.cases
+          );
+          if (selectedCase) selectedConfig.cases = selectedCase;
+        }
+        if (prebuildConfig.cooler) {
+          const selectedCooler = cooler.find(
+            (c) => c._id === prebuildConfig.cooler
+          );
+          if (selectedCooler) selectedConfig.cooler = selectedCooler;
+        }
+        if (prebuildConfig.power) {
+          const selectedPower = power.find(
+            (p) => p._id === prebuildConfig.power
+          );
+          if (selectedPower) selectedConfig.power = selectedPower;
+        }
+
+        setConfig((prev) => ({ ...prev, ...selectedConfig }));
+      };
+
+      loadPrebuildToConfig();
+    }
+  }, [
+    prebuildConfig,
+    cpus,
+    gpus,
+    rams,
+    motherboard,
+    storage,
+    cases,
+    cooler,
+    power,
+  ]);
+
+  const handleOptionChange = (option, value) => {
+    const selected = {
+      cpu: cpus.find((cpu) => cpu._id === value),
+      gpu: gpus.find((gpu) => gpu._id === value),
+      ram: rams.find((ram) => ram._id === value),
+      motherboard: motherboard.find((motherboard) => motherboard._id === value),
+      storage: storage.find((storage) => storage._id === value),
+      cases: cases.find((cases) => cases._id === value),
+      cooler: cooler.find((cooler) => cooler._id === value),
+      power: power.find((power) => power._id === value),
+    }[option];
+
+    setConfig((prev) => ({ ...prev, [option]: selected }));
+  };
+
+  const getPrebuildValue = (option) => {
+    if (prebuildConfig) {
+      return prebuildConfig[option];
+    }
+    return null;
+  };
+
   return (
     <div className="config-main">
       <h1>Configurate your PC</h1>
@@ -40,19 +187,15 @@ function ConfigMain({ config, setConfig }) {
             <td>Processor</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = cpus.find(
-                    (cpu) => cpu._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, cpu: selected }));
-                }}
+                value={getPrebuildValue("cpu") || config.cpu?._id}
+                onChange={(e) => handleOptionChange("cpu", e.target.value)}
               >
                 <option value="" disabled>
                   Select CPU
                 </option>
-                {cpus.map((cpus) => (
-                  <option key={cpus._id} value={cpus._id}>
-                    {cpus.brand} {cpus.model} {cpus.price}$
+                {cpus.map((cpu, index) => (
+                  <option key={cpu._id} value={cpu._id}>
+                    {cpu.brand} {cpu.model} {cpu.price}$
                   </option>
                 ))}
               </select>
@@ -71,17 +214,13 @@ function ConfigMain({ config, setConfig }) {
             <td>GPU</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = gpus.find(
-                    (gpu) => gpu._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, gpu: selected }));
-                }}
+                value={getPrebuildValue("gpu") || config.gpu?._id}
+                onChange={(e) => handleOptionChange("gpu", e.target.value)}
               >
                 <option value="" disabled>
                   Select GPU
                 </option>
-                {gpus.map((gpu) => (
+                {gpus.map((gpu, index) => (
                   <option key={gpu._id} value={gpu._id}>
                     {gpu.brand} {gpu.model} {gpu.price}$
                   </option>
@@ -102,17 +241,13 @@ function ConfigMain({ config, setConfig }) {
             <td>RAM</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = rams.find(
-                    (ram) => ram._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, ram: selected }));
-                }}
+                value={getPrebuildValue("ram") || config.ram?._id}
+                onChange={(e) => handleOptionChange("ram", e.target.value)}
               >
                 <option value="" disabled>
                   Select RAM
                 </option>
-                {rams.map((ram) => (
+                {rams.map((ram, index) => (
                   <option key={ram._id} value={ram._id}>
                     {ram.brand} {ram.model} {ram.price}$
                   </option>
@@ -133,17 +268,13 @@ function ConfigMain({ config, setConfig }) {
             <td>Storage</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = storage.find(
-                    (storage) => storage._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, storage: selected }));
-                }}
+                value={getPrebuildValue("storage") || config.storage?._id}
+                onChange={(e) => handleOptionChange("storage", e.target.value)}
               >
                 <option value="" disabled>
                   Select Storage
                 </option>
-                {storage.map((storage) => (
+                {storage.map((storage, index) => (
                   <option key={storage._id} value={storage._id}>
                     {storage.brand} {storage.model} {storage.price}$
                   </option>
@@ -153,7 +284,7 @@ function ConfigMain({ config, setConfig }) {
             <td>
               <button
                 onClick={() => {
-                  console.log(config.storage);
+                  console.log("Storage selected:", config.storage);
                 }}
               >
                 Confirm your choice
@@ -164,17 +295,13 @@ function ConfigMain({ config, setConfig }) {
             <td>Power Supply</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = power.find(
-                    (power) => power._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, power: selected }));
-                }}
+                value={getPrebuildValue("power") || config.power?._id}
+                onChange={(e) => handleOptionChange("power", e.target.value)}
               >
                 <option value="" disabled>
                   Select PS
                 </option>
-                {power.map((power) => (
+                {power.map((power, index) => (
                   <option key={power._id} value={power._id}>
                     {power.brand} {power.model} {power.price}$
                   </option>
@@ -184,7 +311,7 @@ function ConfigMain({ config, setConfig }) {
             <td>
               <button
                 onClick={() => {
-                  console.log(config.power);
+                  console.log("Power selected:", config.power);
                 }}
               >
                 Confirm your choice
@@ -195,17 +322,13 @@ function ConfigMain({ config, setConfig }) {
             <td>Case</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = cases.find(
-                    (cases) => cases._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, cases: selected }));
-                }}
+                value={getPrebuildValue("cases") || config.cases?._id}
+                onChange={(e) => handleOptionChange("cases", e.target.value)}
               >
                 <option value="" disabled>
                   Select Case
                 </option>
-                {cases.map((cases) => (
+                {cases.map((cases, index) => (
                   <option key={cases._id} value={cases._id}>
                     {cases.brand} {cases.model} {cases.price}$
                   </option>
@@ -226,17 +349,17 @@ function ConfigMain({ config, setConfig }) {
             <td>Motherboard</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = motherboard.find(
-                    (motherboard) => motherboard._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, motherboard: selected }));
-                }}
+                value={
+                  getPrebuildValue("motherboard") || config.motherboard?._id
+                }
+                onChange={(e) =>
+                  handleOptionChange("motherboard", e.target.value)
+                }
               >
                 <option value="" disabled>
                   Select Motherboard
                 </option>
-                {motherboard.map((motherboard) => (
+                {motherboard.map((motherboard, index) => (
                   <option key={motherboard._id} value={motherboard._id}>
                     {motherboard.brand} {motherboard.model} {motherboard.price}$
                   </option>
@@ -257,17 +380,13 @@ function ConfigMain({ config, setConfig }) {
             <td>Cooler</td>
             <td>
               <select
-                onChange={(e) => {
-                  const selected = cooler.find(
-                    (cooler) => cooler._id === e.target.value
-                  );
-                  setConfig((prev) => ({ ...prev, cooler: selected }));
-                }}
+                value={getPrebuildValue("cooler") || config.cooler?._id}
+                onChange={(e) => handleOptionChange("cooler", e.target.value)}
               >
                 <option value="" disabled>
                   Select cooler
                 </option>
-                {cooler.map((cooler) => (
+                {cooler.map((cooler, index) => (
                   <option key={cooler._id} value={cooler._id}>
                     {cooler.brand} {cooler.model} {cooler.price}$
                   </option>

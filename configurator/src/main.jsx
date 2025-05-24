@@ -3,6 +3,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { useState } from "react";
+import { useEffect } from "react";
 import Header from "./components/header";
 import Banner from "./components/banner";
 import Sponsors from "./components/sponsors";
@@ -16,6 +17,7 @@ import Button from "./components/banner-button";
 import LoginPage from "./components/login";
 import LoginLogin from "./components/login-login";
 import BuyCart from "./components/cart";
+import axios from "axios";
 
 function MainPage() {
   return (
@@ -32,6 +34,9 @@ function MainPage() {
 }
 
 function AppWithConfigurator() {
+  const api = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
   const [config, setConfig] = useState({
     cpu: null,
     gpu: null,
@@ -43,6 +48,27 @@ function AppWithConfigurator() {
     case: null,
   });
 
+  const [build, setBuild] = useState({
+    id: null,
+    title: null,
+    specs: null,
+    components: null,
+    price: null,
+  });
+
+  const [prebuilds, setPrebuilds] = useState([]);
+
+  useEffect(() => {
+    const fetchPrebuilds = async () => {
+      try {
+        const response = await api.get("/prebuilds");
+        setPrebuilds(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPrebuilds();
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
@@ -52,7 +78,13 @@ function AppWithConfigurator() {
       />
       <Route
         path="/configurator"
-        element={<Configurator config={config} setConfig={setConfig} />}
+        element={
+          <Configurator
+            config={config}
+            setConfig={setConfig}
+            state={{ prebuildConfig: build }}
+          />
+        }
       />
       <Route path="/banner-button" element={<Button />} />
       <Route path="/login" element={<LoginPage />} />
