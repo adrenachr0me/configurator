@@ -14,7 +14,7 @@ const BannerSection2 = () => {
             className="pc-image"
           />
           <div className="image-overlay">
-            <div className="image-overlay-title">RTX 4080 Gaming PC</div>
+            <div className="image-overlay-title">Mid-Range Gaming PC</div>
             <div className="image-overlay-footer">
               <span className="price">From $1,499.99</span>
               <span className="tag">Best Seller</span>

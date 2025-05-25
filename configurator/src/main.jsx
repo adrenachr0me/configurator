@@ -48,7 +48,7 @@ function AppWithConfigurator() {
     case: null,
   });
 
-  const [build, setBuild] = useState({
+  const [prebuidConfig, setPrebuildConfig] = useState({
     id: null,
     title: null,
     specs: null,
@@ -56,13 +56,11 @@ function AppWithConfigurator() {
     price: null,
   });
 
-  const [prebuilds, setPrebuilds] = useState([]);
-
   useEffect(() => {
     const fetchPrebuilds = async () => {
       try {
         const response = await api.get("/prebuilds");
-        setPrebuilds(response.data);
+        setPrebuildConfig(response.data[0]);
       } catch (error) {
         console.error(error);
       }
@@ -82,7 +80,8 @@ function AppWithConfigurator() {
           <Configurator
             config={config}
             setConfig={setConfig}
-            state={{ prebuildConfig: build }}
+            prebuildConfig={prebuidConfig}
+            setPrebuildConfig={setPrebuildConfig}
           />
         }
       />

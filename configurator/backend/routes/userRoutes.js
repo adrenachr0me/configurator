@@ -3,57 +3,41 @@ const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
+  console.log("POST /api/users triggered");
+  console.log("Request body:", req.body);
   try {
-    const { email, password } = req.body;
+    const { email, password, isRegistration } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Email и пароль обязательны" });
+      return res.status(400).json({ message: "Email and password are required" });
     }
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Пользователь с таким email уже существует" });
+    if (isRegistration) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: "User already exists" });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = new User({ email, password: hashedPassword });
+      await newUser.save();
+      return res.status(201).json({ message: "User created successfully" });
+    } else {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: "Invalid email or password" });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: "Invalid email or password" });
+      }
+      return res.status(200).json({ message: "Login successful" });
     }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new User({
-      email,
-      password: hashedPassword,
-    });
-
-    await newUser.save();
-
-    res.status(201).json({ message: "Пользователь успешно зарегистрирован" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Ошибка сервера" });
-  }
-});
-
-router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ message: "Email и пароль обязательны" });
-    }
-
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: "Неверный email или пароль" });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: "Неверный email или пароль" });
-    }
-
-    res.json({ message: "Успешный вход" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Ошибка сервера" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 module.exports = router;

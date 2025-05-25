@@ -14,12 +14,13 @@ function LoginLogin({ switchToSignin }) {
     e.preventDefault();
     try {
       const response = await api.post("/users", {
-        email,
+        email: login,
         password,
+        isRegistration: false,
       });
 
-      const data = await response("JSON");
-      if (response.ok) {
+      const data = response.data;
+      if (error.response) {
         setError("Wejscie udane");
       } else {
         setError("Nie udało się zalogować");

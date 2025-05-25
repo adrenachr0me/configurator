@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-
+const handleLinkClick = (elementId) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    console.log("Scrolling to element:", element);
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 const BannerSection1 = () => {
   return (
     <div className="text-banner">
@@ -30,11 +36,12 @@ const BannerSection1 = () => {
             </svg>
           </button>
         </Link>
-        <Link to="/featured-builds">
-          <button className="button-large button-secondary">
-            Ready Builds
-          </button>
-        </Link>
+        <button
+          className="button-secondary"
+          onClick={() => handleLinkClick("builds")}
+        >
+          Ready Builds
+        </button>
       </div>
     </div>
   );

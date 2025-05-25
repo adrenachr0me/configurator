@@ -8,29 +8,36 @@ function LoginSignin({ switchToLogin }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const api = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
   const handleSignIn = async (e) => {
-    const api = axios.create({
-      baseURL: "http://localhost:5000/api",
-    });
     e.preventDefault();
+    setError(""); // сброс старой ошибки
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
+
     try {
-      const response = await api.post("/users", {
+      const response = await axios.post("http://localhost:5000/api/users", {
         email: login,
         password,
+        isRegistration: true,
       });
-      const data = await response.json();
-      if (response.ok) {
-        setError("Konto utworzone");
-      } else {
-        setError("Konto nie utworzone");
-      }
+
+      // Успешно создан пользователь
+      console.log("✅ Success:", response.data);
+      setError("Account created successfully!");
     } catch (error) {
-      console.error(error);
+      if (error.response) {
+        console.error("❌ Server error:", error.response.data);
+        setError(error.response.data.message || "Server error");
+      } else {
+        console.error("❌ Unknown error:", error.message);
+        setError("Something went wrong");
+      }
     }
   };
   return (

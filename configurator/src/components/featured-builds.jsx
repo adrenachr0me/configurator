@@ -25,7 +25,7 @@ const FeaturedBuilds = () => {
   }
   console.log("Builds:", builds);
   return (
-    <div className="featured-builds">
+    <div className="featured-builds" id="builds">
       <div className="container">
         <h2 className="section-title">Featured Builds</h2>
         <div className="builds-grid">
@@ -78,7 +78,11 @@ const FeaturedBuilds = () => {
                     {build.components.case.model}{" "}
                   </li>
                 </ul>
-                <Link to="/configurator" className="customize-button">
+                <Link
+                  to="/configurator"
+                  state={{ prebuildConfig: build }}
+                  className="customize-button"
+                >
                   Customize
                   <svg
                     width="16"

@@ -6,7 +6,8 @@ import configurator from "./configurator";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
-function ConfigMain({ config, setConfig }) {
+function ConfigMain({ config, setConfig, prebuildConfig, setPrebuildConfig }) {
+  console.log("prebuildConfig:", prebuildConfig);
   const [cpus, setCpus] = useState([]);
   const [gpus, setGpus] = useState([]);
   const [rams, setRams] = useState([]);
@@ -20,7 +21,6 @@ function ConfigMain({ config, setConfig }) {
   });
 
   const location = useLocation();
-  const prebuildConfig = location.state?.prebuildConfig || null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,76 +86,19 @@ function ConfigMain({ config, setConfig }) {
 
   useEffect(() => {
     if (prebuildConfig) {
-      const loadPrebuildToConfig = () => {
-        const selectedConfig = {};
-
-        if (prebuildConfig.cpu) {
-          const selectedCPU = cpus.find(
-            (cpu) => cpu._id === prebuildConfig.cpu
-          );
-          if (selectedCPU) selectedConfig.cpu = selectedCPU;
-        }
-        if (prebuildConfig.gpu) {
-          const selectedGPU = gpus.find(
-            (gpu) => gpu._id === prebuildConfig.gpu
-          );
-          if (selectedGPU) selectedConfig.gpu = selectedGPU;
-        }
-        if (prebuildConfig.ram) {
-          const selectedRAM = rams.find(
-            (ram) => ram._id === prebuildConfig.ram
-          );
-          if (selectedRAM) selectedConfig.ram = selectedRAM;
-        }
-        if (prebuildConfig.motherboard) {
-          const selectedMB = motherboard.find(
-            (mb) => mb._id === prebuildConfig.motherboard
-          );
-          if (selectedMB) selectedConfig.motherboard = selectedMB;
-        }
-        if (prebuildConfig.storage) {
-          const selectedStorage = storage.find(
-            (s) => s._id === prebuildConfig.storage
-          );
-          if (selectedStorage) selectedConfig.storage = selectedStorage;
-        }
-        if (prebuildConfig.cases) {
-          const selectedCase = cases.find(
-            (c) => c._id === prebuildConfig.cases
-          );
-          if (selectedCase) selectedConfig.cases = selectedCase;
-        }
-        if (prebuildConfig.cooler) {
-          const selectedCooler = cooler.find(
-            (c) => c._id === prebuildConfig.cooler
-          );
-          if (selectedCooler) selectedConfig.cooler = selectedCooler;
-        }
-        if (prebuildConfig.power) {
-          const selectedPower = power.find(
-            (p) => p._id === prebuildConfig.power
-          );
-          if (selectedPower) selectedConfig.power = selectedPower;
-        }
-
-        setConfig((prev) => ({ ...prev, ...selectedConfig }));
-      };
-
-      loadPrebuildToConfig();
+      setPrebuildConfig((prev) => ({
+        ...prev,
+        components: {
+          ...prev.components,
+          [option]: selected,
+        },
+      }));
     }
-  }, [
-    prebuildConfig,
-    cpus,
-    gpus,
-    rams,
-    motherboard,
-    storage,
-    cases,
-    cooler,
-    power,
-  ]);
-
+  }, [prebuildConfig, option, selected]);
   const handleOptionChange = (option, value) => {
+    if (prebuildConfig && prebuildConfig.components[option]) {
+      return;
+    }
     const selected = {
       cpu: cpus.find((cpu) => cpu._id === value),
       gpu: gpus.find((gpu) => gpu._id === value),
@@ -167,12 +110,15 @@ function ConfigMain({ config, setConfig }) {
       power: power.find((power) => power._id === value),
     }[option];
 
-    setConfig((prev) => ({ ...prev, [option]: selected }));
+    setConfig((prev) => ({
+      ...prev,
+      [option]: selected,
+    }));
   };
 
   const getPrebuildValue = (option) => {
-    if (prebuildConfig) {
-      return prebuildConfig[option];
+    if (prebuildConfig && prebuildConfig.components) {
+      return prebuildConfig.components[option]?._id;
     }
     return null;
   };
