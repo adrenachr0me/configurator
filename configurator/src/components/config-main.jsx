@@ -114,15 +114,6 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           ))}
         </select>
       </td>
-      <td>
-        <button
-          onClick={() => {
-            console.log(`${label} выбран:`, config[optionKey]);
-          }}
-        >
-          Confirm your choice
-        </button>
-      </td>
     </tr>
   );
 
