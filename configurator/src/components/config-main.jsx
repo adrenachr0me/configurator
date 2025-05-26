@@ -11,7 +11,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
     storage: [],
     cases: [],
     coolers: [],
-    powers: [],
+    psus: [],
   });
 
   const api = axios.create({
@@ -29,7 +29,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           storageRes,
           casesRes,
           coolersRes,
-          powersRes,
+          psusRes,
         ] = await Promise.all([
           api.get("/cpus"),
           api.get("/gpus"),
@@ -49,7 +49,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           storage: storageRes.data,
           cases: casesRes.data,
           coolers: coolersRes.data,
-          powers: powersRes.data,
+          psus: psusRes.data,
         });
       } catch (error) {
         console.error("Ошибка при загрузке данных компонентов:", error);
@@ -69,7 +69,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
         storage,
         case: pcCase,
         cooler,
-        power,
+        psu,
       } = prebuildConfig.components;
 
       setConfig({
@@ -80,7 +80,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
         storage,
         case: pcCase,
         cooler,
-        power,
+        psu,
       });
     }
   }, [prebuildConfig, setConfig]);
@@ -105,7 +105,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           onChange={(e) => handleOptionChange(optionKey, e.target.value)}
         >
           <option value="" disabled>
-            Choose your option {label}
+            Choose your option
           </option>
           {componentsData[dataKey].map((item) => (
             <option key={item._id} value={item._id}>
@@ -137,7 +137,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           {renderSelectRow("RAM", "ram", "rams")}
           {renderSelectRow("Motherboard", "motherboard", "motherboards")}
           {renderSelectRow("Storage", "storage", "storage")}
-          {renderSelectRow("Power supply", "power", "powers")}
+          {renderSelectRow("Power supply", "psu", "psus")}
           {renderSelectRow("Case", "case", "cases")}
           {renderSelectRow("Cooler", "cooler", "coolers")}
         </tbody>
