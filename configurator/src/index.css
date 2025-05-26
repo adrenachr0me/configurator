@@ -1351,6 +1351,7 @@ button:hover {
   color: #000000;
   width: 80%;
   margin: 0 auto 0 auto;
+  margin-top: 20px;
   margin-bottom: 25px;
 }
 

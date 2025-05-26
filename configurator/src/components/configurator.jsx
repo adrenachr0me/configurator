@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../index.css";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Header from "./header";
 import ConfigMain from "./config-main";
 import Footer from "./footer";
@@ -12,6 +12,16 @@ function Configurator({
   prebuildConfig,
   setPrebuildConfig,
 }) {
+  const location = useLocation();
+  const statePrebuild = location.state?.prebuildConfig;
+
+  useEffect(() => {
+    if (statePrebuild) {
+      setPrebuildConfig(statePrebuild);
+      setConfig(statePrebuild.components);
+    }
+  }, [statePrebuild, setPrebuildConfig, setConfig]);
+
   return (
     <div>
       <Header />
@@ -26,4 +36,5 @@ function Configurator({
     </div>
   );
 }
+
 export default Configurator;

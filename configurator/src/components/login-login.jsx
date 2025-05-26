@@ -18,7 +18,8 @@ function LoginLogin({ switchToSignin }) {
         password,
         isRegistration: false,
       });
-
+      console.log("✅ Success:", response.data);
+      setError("Account created successfully!");
       const data = response.data;
       if (error.response) {
         setError("Wejscie udane");
