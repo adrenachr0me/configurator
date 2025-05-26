@@ -443,10 +443,15 @@ button:hover {
 }
 
 .build-image {
-  height: 10rem;
+  height: 400px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.build-image img {
+  height: 100%;
+  width: 100%;
 }
 
 .build-blue {

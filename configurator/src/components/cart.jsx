@@ -16,9 +16,9 @@ function BuyCart({ config, setConfig }) {
     { type: "RAM", config: config.ram },
     { type: "Storage", config: config.storage },
     { type: "Cooler", config: config.cooler },
-    { type: "Power Supply", config: config.power },
+    { type: "Power Supply", config: config.psu },
     { type: "Motherboard", config: config.motherboard },
-    { type: "Case", config: config.cases },
+    { type: "Case", config: config.case },
   ];
   const totalPrice = components.reduce((i, component) => {
     if (component.config) {

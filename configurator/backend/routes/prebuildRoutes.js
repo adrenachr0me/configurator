@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
         .populate("components.case");
   
       const prebuildsData = prebuilds.map((prebuild) => ({
+        image: prebuild.image,
         title: prebuild.title,
         specs: prebuild.specs,
         components: prebuild.components,

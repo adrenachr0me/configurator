@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const autopopulate = require("mongoose-autopopulate");
 const prebuildSchema = new mongoose.Schema({
+  image: String,
     title: String,
     specs: String,
     components: {
