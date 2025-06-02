@@ -18,6 +18,8 @@ import LoginPage from "./components/login";
 import LoginLogin from "./components/login-login";
 import BuyCart from "./components/cart";
 import axios from "axios";
+import Checkout from "./components/checkout";
+import CheckoutPage from "./components/checkout-page";
 
 function MainPage() {
   return (
@@ -55,6 +57,7 @@ function AppWithConfigurator() {
     components: null,
     price: null,
   });
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const fetchPrebuilds = async () => {
@@ -72,7 +75,13 @@ function AppWithConfigurator() {
       <Route path="/" element={<MainPage />} />
       <Route
         path="/cart"
-        element={<BuyCart config={config} setConfig={setConfig} />}
+        element={
+          <BuyCart
+            config={config}
+            setConfig={setConfig}
+            setTotalPrice={setTotalPrice}
+          />
+        }
       />
       <Route
         path="/configurator"
@@ -88,6 +97,11 @@ function AppWithConfigurator() {
       <Route path="/banner-button" element={<Button />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/login-login" element={<LoginLogin />} />
+      <Route path="/checkout" element={<Checkout totalPrice={totalPrice} />} />
+      <Route
+        path="/checkout-page"
+        element={<CheckoutPage totalPrice={totalPrice} />}
+      />
     </Routes>
   );
 }

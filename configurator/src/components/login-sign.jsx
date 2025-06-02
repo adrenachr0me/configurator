@@ -13,7 +13,7 @@ function LoginSignin({ switchToLogin }) {
   });
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setError(""); // сброс старой ошибки
+    setError(""); 
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -27,7 +27,6 @@ function LoginSignin({ switchToLogin }) {
         isRegistration: true,
       });
 
-      // Успешно создан пользователь
       console.log("✅ Success:", response.data);
       setError("Account created successfully!");
     } catch (error) {

@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import configurator from "./configurator";
 import axios from "axios";
 import { useEffect, useState } from "react";
-function BuyCart({ config, setConfig }) {
+
+import Checkout from "./checkout";
+import { set } from "mongoose";
+function BuyCart({ config, setConfig, setTotalPrice }) {
   if (!config) {
     return <div>Loading...</div>;
   }
@@ -26,6 +29,8 @@ function BuyCart({ config, setConfig }) {
     }
     return i;
   }, 0);
+  setTotalPrice(totalPrice);
+
   return (
     <div>
       <Header />
@@ -71,7 +76,9 @@ function BuyCart({ config, setConfig }) {
         </table>
 
         <p>Total Price: {totalPrice}$</p>
-        <button className="buybut">Proceed to Checkout</button>
+        <Link to="/checkout-page">
+          <button className="buybut">Proceed to Checkout</button>
+        </Link>
       </div>
       <Footer />
     </div>

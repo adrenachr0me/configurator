@@ -1457,3 +1457,100 @@ select {
   width: 100px;
   height: 100px;
 }
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: cen ter;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.checkout h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.checkout-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.checkout-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.checkout-form input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.checkout-form button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.checkout-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.checkout-form p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#back-button {
+  background-color: #928d8d;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+#back-button:hover {
+  background-color: #7a7a7a;
+  color: white;
+}
+
+.full-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007508;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .checkout {
+    padding: 10px;
+  }
+}
