@@ -61,13 +61,63 @@ function Checkout({ totalPrice }) {
           />
         </div>
         <div>
-          <label>Card Number:</label>
-          <input
+          <label>Payment Option</label>
+          <select
             name="card"
             value={form.card}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="" disabled>
+              Select a payment option
+            </option>
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Bank Transfer</option>
+          </select>
+          <div className="payment-info">
+            {form.card === "credit-card" && (
+              <div>
+                <label>Card Number:</label>
+                <input
+                  name="cardNumber"
+                  type="text"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+                <input
+                  name="expiryDate"
+                  type="text"
+                  placeholder="MM/YY"
+                  required
+                />
+                <input name="cvv" type="text" placeholder="CVV" required />
+                <input
+                  name="cardHolderName"
+                  type="text"
+                  placeholder="Card Holder Name"
+                  required
+                />
+              </div>
+            )}
+            {form.card === "paypal" && (
+              <div>
+                <label>PayPal Email:</label>
+                <input
+                  name="paypalEmail"
+                  type="email"
+                  placeholder="email@example.com"
+                  required
+                />
+              </div>
+            )}
+            {form.card === "bank-transfer" && (
+              <div>
+                <label>Bank Account Number:</label>
+                <p>UA753220010000026200335748809</p>
+              </div>
+            )}
+          </div>
         </div>
         <button type="submit">Place Order</button>
         <p className="full-price">Total Price: {totalPrice.totalPrice}$</p>

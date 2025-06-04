@@ -840,7 +840,6 @@ button:hover {
   font-weight: 700;
 }
 
-/* Cart Table Styles */
 .cart-table {
   width: 100%;
   max-width: 1200px;
@@ -848,10 +847,19 @@ button:hover {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 10px;
+  overflow: hidden;
   overflow: fit-content;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
 .cart-table th {
@@ -906,6 +914,8 @@ button:hover {
   color: #16a34a;
 }
 
+.cart-table td:nth-child(2),
+.cart-table td:nth-child(3),
 /* Component Name Column */
 .cart-table td:nth-child(2) {
   width: 30%;
@@ -945,10 +955,13 @@ button:hover {
 
 @media (max-width: 768px) {
   .cart-table {
+    width: 100%;
+    max-width: 100%;
     width: 80%;
     max-width: 80%;
   }
 
+  .cart-table th,
   .cart-table td {
     padding: 0.75rem 1rem;
   }
@@ -965,6 +978,7 @@ button:hover {
     font-size: 0.75 rem;
   }
 }
+/*******  cda89bdb-4832-443d-8471-246e054ef6cb  *******/
 
 /* Checkout Button */
 .buybut {
@@ -1553,4 +1567,14 @@ select {
   .checkout {
     padding: 10px;
   }
+}
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
 }

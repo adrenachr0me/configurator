@@ -41,7 +41,6 @@ function BuyCart({ config, setConfig, setTotalPrice }) {
             <tr>
               <th>Type</th>
               <th>Name</th>
-              <th>Quantity</th>
               <th>Price</th>
             </tr>
           </thead>
@@ -62,7 +61,6 @@ function BuyCart({ config, setConfig, setTotalPrice }) {
                     </strong>
                   </p>
                 </td>
-                <td></td>
                 <td>
                   <p>
                     {component.config
