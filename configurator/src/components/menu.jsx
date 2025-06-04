@@ -16,11 +16,6 @@ const Menu = ({ toggleMenu }) => {
           </Link>
         </li>
         <li>
-          <Link to="/featured-builds" onClick={toggleMenu}>
-            Ready Builds
-          </Link>
-        </li>
-        <li>
           <Link to="/about" onClick={toggleMenu}>
             About Us
           </Link>
