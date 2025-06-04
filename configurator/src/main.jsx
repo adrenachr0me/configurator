@@ -20,6 +20,14 @@ import BuyCart from "./components/cart";
 import axios from "axios";
 import Checkout from "./components/checkout";
 import CheckoutPage from "./components/checkout-page";
+import AboutUs from "./components/about-us";
+import FAQ from "./components/faq";
+import Delivery from "./components/delivery";
+import Warranty from "./components/warranty";
+import Contact from "./components/contact";
+import TermsOfService from "./components/terms-of-service";
+import PrivacyPolicy from "./components/privacy-policy";
+import ScrollToTop from "./components/scroll-to-top";
 
 function MainPage() {
   return (
@@ -70,39 +78,53 @@ function AppWithConfigurator() {
     };
     fetchPrebuilds();
   }, []);
+
   return (
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route
-        path="/cart"
-        element={
-          <BuyCart
-            config={config}
-            setConfig={setConfig}
-            setTotalPrice={setTotalPrice}
-          />
-        }
-      />
-      <Route
-        path="/configurator"
-        element={
-          <Configurator
-            config={config}
-            setConfig={setConfig}
-            prebuildConfig={prebuidConfig}
-            setPrebuildConfig={setPrebuildConfig}
-          />
-        }
-      />
-      <Route path="/banner-button" element={<Button />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/login-login" element={<LoginLogin />} />
-      <Route path="/checkout" element={<Checkout totalPrice={totalPrice} />} />
-      <Route
-        path="/checkout-page"
-        element={<CheckoutPage totalPrice={totalPrice} />}
-      />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/cart"
+          element={
+            <BuyCart
+              config={config}
+              setConfig={setConfig}
+              setTotalPrice={setTotalPrice}
+            />
+          }
+        />
+        <Route
+          path="/configurator"
+          element={
+            <Configurator
+              config={config}
+              setConfig={setConfig}
+              prebuildConfig={prebuidConfig}
+              setPrebuildConfig={setPrebuildConfig}
+            />
+          }
+        />
+        <Route path="/banner-button" element={<Button />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login-login" element={<LoginLogin />} />
+        <Route
+          path="/checkout"
+          element={<Checkout totalPrice={totalPrice} />}
+        />
+        <Route
+          path="/checkout-page"
+          element={<CheckoutPage totalPrice={totalPrice} />}
+        />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/delivery" element={<Delivery />} />
+        <Route path="/warranty" element={<Warranty />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+      </Routes>
+    </>
   );
 }
 

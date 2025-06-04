@@ -3,25 +3,24 @@ const Testimonials = () => {
     {
       id: 1,
       name: "Alex P.",
-      avatar: "/placeholder.svg?height=60&width=60",
       text: "Built my first gaming PC through HiConfig. The process was very simple, and the prices were lower than competitors. Delivered in just 3 days!",
       rating: 5,
     },
     {
       id: 2,
       name: "Maria S.",
-      avatar: "/placeholder.svg?height=60&width=60",
+
       text: "Excellent service! The consultant helped me select components within my budget. The computer has been working perfectly for six months now.",
       rating: 5,
     },
     {
       id: 3,
       name: "Dmitry K.",
-      avatar: "/placeholder.svg?height=60&width=60",
+
       text: "Ordered a streaming build. Everything arrived on time, and the build quality is top-notch. Highly recommend to all gamers!",
       rating: 4,
     },
-  ]
+  ];
 
   return (
     <div className="testimonials">
@@ -31,14 +30,15 @@ const Testimonials = () => {
           {reviews.map((review) => (
             <div key={review.id} className="testimonial-card">
               <div className="testimonial-header">
-                <img src={review.avatar || "/placeholder.svg"} alt={review.name} className="testimonial-avatar" />
                 <div className="testimonial-info">
                   <h3>{review.name}</h3>
                   <div className="rating">
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className={`star ${i < review.rating ? "star-filled" : "star-empty"}`}
+                        className={`star ${
+                          i < review.rating ? "star-filled" : "star-empty"
+                        }`}
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -54,7 +54,7 @@ const Testimonials = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Testimonials
+export default Testimonials;
