@@ -21,7 +21,7 @@ function LoginSignin({ switchToLogin }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users", {
+      const response = await api.post("/users", {
         email: login,
         password,
         isRegistration: true,
