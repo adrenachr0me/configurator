@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "6808199eb46d6f1870f30204"
+  },
+  "brand": "Intel",
+  "model": "Core i5-12400F",
+  "socket": "LGA1700",
+  "cores": 6,
+  "threads": 12,
+  "baseClockGHz": 2.5,
+  "boostClockGHz": 4.4,
+  "tdp": 65,
+  "price": 180
+},
+{
+  "_id": {
+    "$oid": "680819a9b46d6f1870f30209"
+  },
+  "brand": "AMD",
+  "model": "Ryzen 5 5600X",
+  "socket": "AM4",
+  "cores": 6,
+  "threads": 12,
+  "baseClockGHz": 3.7,
+  "boostClockGHz": 4.6,
+  "tdp": 65,
+  "price": 160
+},
+{
+  "_id": {
+    "$oid": "680819b7b46d6f1870f3020b"
+  },
+  "brand": "Intel",
+  "model": "Core i7-12700K",
+  "socket": "LGA1700",
+  "cores": 12,
+  "threads": 20,
+  "baseClockGHz": 3.6,
+  "boostClockGHz": 5,
+  "tdp": 125,
+  "price": 380
+},
+{
+  "_id": {
+    "$oid": "680819c0b46d6f1870f3020d"
+  },
+  "brand": "AMD",
+  "model": "Ryzen 7 5800X",
+  "socket": "AM4",
+  "cores": 8,
+  "threads": 16,
+  "baseClockGHz": 3.8,
+  "boostClockGHz": 4.7,
+  "tdp": 105,
+  "price": 310
+},
+{
+  "_id": {
+    "$oid": "680819cab46d6f1870f3020e"
+  },
+  "brand": "Intel",
+  "model": "Core i3-13100F",
+  "socket": "LGA1700",
+  "cores": 4,
+  "threads": 8,
+  "baseClockGHz": 3.4,
+  "boostClockGHz": 4.5,
+  "tdp": 58,
+  "price": 110
+}]

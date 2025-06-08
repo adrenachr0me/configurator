@@ -1,19 +1,17 @@
-import Button from "./banner-button";
-import "../index.css";
 import React from "react";
+import BannerContent from "./banner-section1";
+import BannerImage from "./banner-section2";
+import "../index.css";
 
-function Banner() {
+const Banner = () => {
   return (
     <div className="banner">
-      <h1>Thinking about diving in wonderful world of games?</h1>
-      <p>Are you looking for the best components and builds at great prices?</p>
-      <p>
-        Working and gaming stations made with determenation and extra love are
-        allready waiting for you.
-      </p>
-      <Button />
+      <div className="banner-container">
+        <BannerContent />
+        <BannerImage />
+      </div>
     </div>
   );
-}
+};
 
 export default Banner;
