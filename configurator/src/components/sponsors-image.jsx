@@ -1,6 +1,6 @@
 import React from "react";
 import "../index.css";
-import hyperx from "../assets/hyperX-logo.png";
+import hyperx from "../assets/HyperX-logo.png";
 import nvidia from "../assets/NVIDIA-logo.png";
 import samsung from "../assets/Samsung-Logo.png";
 
