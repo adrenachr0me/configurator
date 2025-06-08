@@ -14,6 +14,9 @@ const userRoutes = require("./routes/userRoutes");
 console.log(userRoutes);
 app.use("/api/users", userRoutes);
 
+const msgRoutes = require("./routes/msgRoutes");
+app.use("/api/messages", msgRoutes);
+
 const gpuRoutes = require("./routes/gpuRoutes");
 app.use("/api/gpus", gpuRoutes);
 

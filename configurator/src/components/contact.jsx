@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Header from "./header"
-import Footer from "./footer"
+import { useState } from "react";
+import Header from "./header";
+import Footer from "./footer";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,22 +11,29 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
-  })
+  });
+  const api = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-    alert("Thank you for your message! We'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.post("/messages", formData);
+    } catch (error) {
+      console.error(error);
+    }
+    console.log("Form submitted:", formData);
+    alert("Thank you for your message! We'll get back to you soon.");
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
 
   return (
     <div className="page-container">
@@ -41,7 +49,10 @@ const Contact = () => {
             <div className="contact-grid">
               <div className="contact-info">
                 <h2>Get In Touch</h2>
-                <p>Have questions about our products or need technical support? Our team is ready to assist you.</p>
+                <p>
+                  Have questions about our products or need technical support?
+                  Our team is ready to assist you.
+                </p>
 
                 <div className="contact-methods">
                   <div className="contact-method">
@@ -139,7 +150,13 @@ const Contact = () => {
 
                   <div className="form-group">
                     <label htmlFor="subject">Subject *</label>
-                    <select id="subject" name="subject" value={formData.subject} onChange={handleChange} required>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    >
                       <option value="">Select a subject</option>
                       <option value="general">General Inquiry</option>
                       <option value="technical">Technical Support</option>
@@ -200,7 +217,7 @@ const Contact = () => {
       </main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
