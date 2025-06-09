@@ -35,7 +35,7 @@ app.use("/api/rams", ramRoutes);
 app.use("/api/storage", strRoutes);
 app.use("/api/power", pbsRoutes);
 app.use("/api/motherboards", mbsRoutes);
-app.use("/api/cooler", coolsRoutes);
+app.use("/api/cools", coolsRoutes);
 app.use("/api/cases", caseRoutes);
 app.use("/api/prebuilds", prebuildRoutes);
 

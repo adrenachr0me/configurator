@@ -37,7 +37,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           api.get("/motherboards"),
           api.get("/storage"),
           api.get("/cases"),
-          api.get("/cooler"),
+          api.get("/cools"),
           api.get("/power"),
         ]);
 
@@ -130,7 +130,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           {renderSelectRow("Storage", "storage", "storage")}
           {renderSelectRow("Power supply", "psu", "psus")}
           {renderSelectRow("Case", "case", "cases")}
-          {renderSelectRow("Cooler", "cooler", "coolers")}
+          {renderSelectRow("Cooler", "cools", "coolers")}
         </tbody>
       </table>
     </div>
