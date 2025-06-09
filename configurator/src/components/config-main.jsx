@@ -130,7 +130,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           {renderSelectRow("Storage", "storage", "storage")}
           {renderSelectRow("Power supply", "psu", "psus")}
           {renderSelectRow("Case", "case", "cases")}
-          {renderSelectRow("Cooler", "cools", "coolers")}
+          {renderSelectRow("Cooler", "cooler", "coolers")}
         </tbody>
       </table>
     </div>
