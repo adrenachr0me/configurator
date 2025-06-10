@@ -14,7 +14,6 @@ function LoginSignin({ switchToLogin }) {
   });
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setError("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
