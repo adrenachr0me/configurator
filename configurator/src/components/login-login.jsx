@@ -2,14 +2,14 @@ import React, { use } from "react";
 import "../index.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import { API_BASE_URL } from "../config/api";
 function LoginLogin({ switchToSignin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const handleLogin = async (e) => {
     const api = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
+      baseURL: API_BASE_URL,
     });
     e.preventDefault();
     try {

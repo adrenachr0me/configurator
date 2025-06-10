@@ -3,13 +3,14 @@ import "../index.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "./header";
+import { API_BASE_URL } from "../config/api";
 function LoginSignin({ switchToLogin }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_BASE_URL,
   });
   const handleSignIn = async (e) => {
     e.preventDefault();

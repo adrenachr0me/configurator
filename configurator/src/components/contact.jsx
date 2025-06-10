@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ const Contact = () => {
     message: "",
   });
   const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_BASE_URL,
   });
 
   const handleChange = (e) => {

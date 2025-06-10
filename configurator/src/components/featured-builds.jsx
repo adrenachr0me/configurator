@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import { API_BASE_URL } from "../config/api";
 const FeaturedBuilds = () => {
   const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_BASE_URL,
   });
 
   const [builds, setBuilds] = useState([]);
