@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../index.css";
-
+import { API_BASE_URL } from "../config/api";
 function ConfigMain({ config, setConfig, prebuildConfig }) {
   const [componentsData, setComponentsData] = useState({
     cpus: [],
@@ -15,7 +15,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
   });
 
   const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_BASE_URL,
   });
 
   useEffect(() => {
