@@ -9,11 +9,11 @@ function LoginSignin({ switchToLogin }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const api = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: process.env.REACT_APP_API_URL,
   });
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
