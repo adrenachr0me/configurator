@@ -1353,7 +1353,6 @@ button:hover {
 .cart-table {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 15px;
@@ -3985,7 +3984,7 @@ select:hover {
   }
 
   .cart-table {
-    width: 90%;
+    width: 100%;
   }
 
   .cart-table th,
