@@ -8,7 +8,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
     gpus: [],
     rams: [],
     motherboards: [],
-    storage: [],
+    storages: [],
     cases: [],
     coolers: [],
     psus: [],
@@ -46,7 +46,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           gpus: gpusRes.data,
           rams: ramsRes.data,
           motherboards: motherboardsRes.data,
-          storage: storageRes.data,
+          storages: storageRes.data,
           cases: casesRes.data,
           coolers: coolersRes.data,
           psus: psusRes.data,
@@ -127,7 +127,7 @@ function ConfigMain({ config, setConfig, prebuildConfig }) {
           {renderSelectRow("Videocard", "gpu", "gpus")}
           {renderSelectRow("RAM", "ram", "rams")}
           {renderSelectRow("Motherboard", "motherboard", "motherboards")}
-          {renderSelectRow("Storage", "storage", "storage")}
+          {renderSelectRow("Storage", "storage", "storages")}
           {renderSelectRow("Power supply", "psu", "psus")}
           {renderSelectRow("Case", "case", "cases")}
           {renderSelectRow("Cooler", "cooler", "coolers")}
