@@ -158,9 +158,7 @@ button:hover {
 .button-secondary {
   background: linear-gradient(135deg, #1f2937, #111827);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  height: auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   cursor: pointer;
@@ -1554,7 +1552,7 @@ button:hover {
   align-items: center;
   width: 100%;
   max-width: 450px;
-  gap: 0; /* Remove gap to let margin handle spacing */
+  gap: 0;
 }
 
 .login::before,
@@ -1614,7 +1612,7 @@ button:hover {
 .sign-in input {
   width: 100%;
   max-width: 400px;
-  margin: 0.75rem auto; /* Center the inputs and add vertical margin */
+  margin: 0.75rem auto;
   padding: 1rem 1.25rem;
   border-radius: 12px;
   border: 2px solid #e5e7eb;
@@ -1624,7 +1622,7 @@ button:hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   text-align: left;
-  display: block; /* Ensure inputs are block elements */
+  display: block;
 }
 
 .login input:focus,
@@ -2258,7 +2256,6 @@ select:hover {
   color: #16a34a;
 }
 
-/* Page Container Styles */
 .page-container {
   min-height: 100vh;
   display: flex;
@@ -2328,7 +2325,6 @@ select:hover {
   z-index: 1;
 }
 
-/* Page-specific styles */
 .about-us-page,
 .faq-page,
 .delivery-page,
@@ -2340,7 +2336,6 @@ select:hover {
   padding: 0 0 2rem;
 }
 
-/* About Us Page */
 .about-content {
   margin-bottom: 3rem;
 }
@@ -2594,7 +2589,6 @@ select:hover {
   color: #374151;
 }
 
-/* FAQ Page */
 .faq-content {
   max-width: 900px;
   margin: 0 auto;
@@ -2797,7 +2791,6 @@ select:hover {
   box-shadow: 0 8px 20px rgba(107, 114, 128, 0.3);
 }
 
-/* Delivery Page */
 .delivery-section {
   margin-bottom: 3rem;
 }
@@ -2987,7 +2980,6 @@ select:hover {
   margin-bottom: 0.5rem;
 }
 
-/* Warranty Page */
 .warranty-section {
   margin-bottom: 3rem;
 }
@@ -3300,7 +3292,6 @@ select:hover {
   box-shadow: 0 8px 20px rgba(107, 114, 128, 0.3);
 }
 
-/* Contact Page */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -3713,7 +3704,6 @@ select:hover {
   color: #374151;
 }
 
-/* Terms and Privacy Pages */
 .terms-content,
 .privacy-content {
   max-width: 900px;
@@ -3816,7 +3806,6 @@ select:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Utility Classes */
 .hidden {
   display: none;
 }
@@ -3850,7 +3839,6 @@ select:hover {
   transform: scale(1.05) rotate(2deg);
 }
 
-/* Keyframe Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -3894,7 +3882,6 @@ select:hover {
   }
 }
 
-/* Responsive Design */
 @media (min-width: 480px) {
   .header h1 {
     font-size: 1.75rem;
@@ -3984,7 +3971,7 @@ select:hover {
   }
 
   .cart-table {
-    width: 100%;
+    width: 90%;
   }
 
   .cart-table th,
